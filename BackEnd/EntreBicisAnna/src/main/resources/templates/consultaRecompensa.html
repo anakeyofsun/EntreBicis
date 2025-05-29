@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Visualitzar recompensa</title>
+    <link rel="stylesheet" href="/css/variables.css">
+    <link rel="stylesheet" href="/css/styles.css">
+    <link rel="stylesheet" href="/css/button.css">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+</head>
+
+<body>
+    <div th:replace="fragments :: topnav"></div>
+
+    <h1>Visualitzar recompensa</h1>
+
+    <div class="contenidor">
+        <div class="imatge-recompensa">
+            <img th:if="${recompensa.imatgeBase64 != null}"
+                th:src="'data:image/jpeg;base64,' + ${recompensa.imatgeBase64}" alt="Foto de recompensa"
+                class="foto-usuari">
+            <img th:if="${recompensa.imatgeBase64 == null}" src="/imatges/placeholder-perfil.png"
+                alt="Foto de recompensa per defecte" class="foto-usuari">
+        </div>
+
+        <div class="info-usuari">
+            <div class="dades-usuari">
+                <p><strong>Descripció:</strong> <span th:text="${recompensa.descripcio}"></span></p>
+                <p><strong>Observacions:</strong> <span th:text="${recompensa.observacions}"></span></p>
+                <p><strong>Saldo necessari:</strong> <span th:text="${recompensa.saldoNecessari}"></span> punts</p>
+                <p><strong>Estat:</strong> <span th:text="${recompensa.estatRecompensa}"></span></p>
+                <p><strong>Nom punt bescanvi:</strong> <span th:text="${recompensa.nomPuntBescanvi}"></span></p>
+                <p><strong>Adreça punt bescanvi:</strong> <span th:text="${recompensa.adresaPuntBescanvi}"></span></p>
+                <p><strong>Usuari:</strong> <span
+                        th:text="${recompensa?.usuari?.nomComplet ?: 'Sense reclamar'}"></span></p>
+                <p><strong>Data de creació: </strong> <span th:text="${recompensa.dataCreacio}"></span></p>
+                <p th:if="${recompensa.dataReserva != null}">
+                    <strong>Data de reserva:</strong> <span th:text="${recompensa.dataReserva}"></span>
+                </p>
+                <p th:if="${recompensa.dataAssignacio != null}">
+                    <strong>Data d'assignació:</strong> <span th:text="${recompensa.dataAssignacio}"></span>
+                </p>
+                <p th:if="${recompensa.dataRecollida != null}">
+                    <strong>Data de recollida:</strong> <span th:text="${recompensa.dataRecollida}"></span>
+                </p>
+            </div>
+
+            <div class="botons">
+                <!-- Botó ASSIGNAR només si l'estat és RESERVADA -->
+                <form th:if="${recompensa.estatRecompensa.name() == 'RESERVADA'}"
+                    th:action="@{/recompenses/assignar/{idRecompensa}(idRecompensa=${recompensa.idRecompensa})}"
+                    method="post">
+                    <button type="submit" class="boto boto-recompenses">
+                        <img src="/imatges/check.svg" alt="Icona Assignar">
+                        <span>ASSIGNAR</span>
+                    </button>
+                </form>
+
+                <!-- Botó ESBORRAR amb confirmació -->
+                <a href="#" th:onclick="'confirmarEsborrar(' + ${recompensa.idRecompensa} + ');'"
+                    class="boto boto-rutes">
+                    <img src="/imatges/cross.svg" alt="Icona Esborrar">
+                    <span>ESBORRAR</span>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- SweetAlert2 + notificacions -->
+    <script th:inline="javascript">
+        /*<![CDATA[*/
+        let error = /*[[${error}]]*/ null;
+        let missatgeExit = /*[[${missatgeExit}]]*/ null;
+
+        if (error) {
+            Swal.fire({
+                icon: 'error',
+                title: 'Error!',
+                text: error,
+                confirmButtonColor: '#F27474'
+            });
+        }
+
+        if (missatgeExit) {
+            Swal.fire({
+                icon: 'success',
+                title: 'Èxit!',
+                text: missatgeExit,
+                confirmButtonColor: '#74F274'
+            });
+        }
+
+        function confirmarEsborrar(idRecompensa) {
+            Swal.fire({
+                title: 'Estàs segur?',
+                text: 'Això eliminarà la recompensa!',
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#d33',
+                cancelButtonColor: '#3085d6',
+                confirmButtonText: 'Sí, eliminar!',
+                cancelButtonText: 'Cancel·lar'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    window.location.href = '/recompenses/esborrar/' + idRecompensa;
+                }
+            });
+        }
+        /*]]>*/
+    </script>
+
+</body>
+
+</html>

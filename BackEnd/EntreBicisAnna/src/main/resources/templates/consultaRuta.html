@@ -1,0 +1,217 @@
+
+<!--<!DOCTYPE html>
+<html lang="ca" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Detalls de la ruta</title>
+    <link rel="stylesheet" href="/css/variables.css">
+    <link rel="stylesheet" href="/css/styles.css">
+    <link rel="stylesheet" href="/css/button.css">
+</head>
+
+<body class="background">
+    <div th:replace="fragments :: topnav"></div>
+
+    <main class="contenidor-detall">
+        <h1 class="title">Detalls de la ruta</h1>
+
+        <div class="caixa-ruta">
+            <p><strong>Data:</strong> <span th:text="${ruta.data}"></span></p>
+            <p><strong>Usuari:</strong><span th:text="${ruta.Usuari.nomComplet}"></span></p>
+            <p><strong>Distància recorreguda:</strong>
+                <span th:text="${#numbers.formatDecimal(ruta.distanciaTotal, 1, 2)}"></span> km</p>
+            <p><strong>Temps total:</strong>
+                <span th:text="${#numbers.formatDecimal(ruta.tempsTotal, 1, 2)}"></span> min</p>
+            <p><strong>Velocitat màxima:</strong>
+                <span th:text="${#numbers.formatDecimal(ruta.velocitatMaxima, 1, 2)}"></span> km/h</p>
+            <p><strong>Velocitat mitjana:</strong>
+                <span th:text="${#numbers.formatDecimal(ruta.velocitatMitjana, 1, 2)}"></span> km/h</p>
+            <p><strong>Saldo obtingut:</strong>
+                <span th:text="${#numbers.formatDecimal(ruta.saldoObtingut, 1, 2)}"></span> punts</p>
+
+            <p>
+                <strong>Estat validació:</strong>
+                <span th:if="${ruta.validada}" style="color: green;">Validada</span>
+                <span th:unless="${ruta.validada}" style="color: red;">No validada</span>
+            </p>
+
+            <form th:action="@{/rutes/validacio}" method="post">
+                <input type="hidden" name="idRuta" th:value="${ruta.idRuta}" />
+                <input type="hidden" name="validada" th:value="${!ruta.validada}" />
+            
+                <button type="submit"
+                        th:text="${ruta.validada ? 'Invalidar ruta' : 'Validar ruta'}"
+                        th:class="${ruta.validada ? 'btn-invalidar' : 'btn-validar'}">
+                </button>
+            </form>
+        </div>
+
+        <h2>Mapa de la ruta</h2>
+        <div id="mapa"></div>
+    </main>
+
+    <script th:inline="javascript">
+        let punts = [[${puntsGPS}]];
+        function initMap() {
+            if (!punts || punts.length === 0) return;
+
+            const primer = { lat: punts[0].latitud, lng: punts[0].longitud };
+            const mapa = new google.maps.Map(document.getElementById("mapa"), {
+                zoom: 16,
+                center: primer
+            });
+
+            const coordenades = punts.map(p => ({ lat: p.latitud, lng: p.longitud }));
+
+            const infoWindow = new google.maps.InfoWindow();
+
+            coordenades.forEach(coord => {
+                const marker = new google.maps.Marker({ position: coord, map: mapa });
+                marker.addListener("click", () => {
+                    infoWindow.setContent(
+                        `<div style='font-size: 14px;'><strong>Latitud:</strong> ${coord.lat}<br><strong>Longitud:</strong> ${coord.lng}</div>`
+                    );
+                    infoWindow.open(mapa, marker);
+                });
+            });
+
+            const rutaPolyline = new google.maps.Polyline({
+                path: coordenades,
+                geodesic: true,
+                strokeColor: "#FF0000",
+                strokeOpacity: 1.0,
+                strokeWeight: 4
+            });
+            rutaPolyline.setMap(mapa);
+        }
+    </script>
+    <script async defer
+            src="YOURAPIKEY">
+    </script>
+</body>
+
+</html>-->
+<!DOCTYPE html>
+<html lang="ca" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Detalls de la ruta</title>
+    <link rel="stylesheet" href="/css/variables.css">
+    <link rel="stylesheet" href="/css/styles.css">
+    <link rel="stylesheet" href="/css/button.css">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+</head>
+
+<body class="background">
+    <div th:replace="fragments :: topnav"></div>
+
+    <main class="contenidor-detall">
+        <h1 class="title">Detalls de la ruta</h1>
+
+        <div class="caixa-ruta">
+            <p><strong>Data:</strong> <span th:text="${ruta.data}"></span></p>
+            <p><strong>Usuari:</strong><span th:text="${ruta.Usuari.nomComplet}"></span></p>
+            <p><strong>Distància recorreguda:</strong>
+                <span th:text="${#numbers.formatDecimal(ruta.distanciaTotal, 1, 2)}"></span> km</p>
+            <p><strong>Temps total:</strong>
+                <span th:text="${#numbers.formatDecimal(ruta.tempsTotal, 1, 2)}"></span> min</p>
+            <p><strong>Velocitat màxima:</strong>
+                <span th:text="${#numbers.formatDecimal(ruta.velocitatMaxima, 1, 2)}"></span> km/h</p>
+            <p><strong>Velocitat mitjana:</strong>
+                <span th:text="${#numbers.formatDecimal(ruta.velocitatMitjana, 1, 2)}"></span> km/h</p>
+            <p><strong>Saldo obtingut:</strong>
+                <span th:text="${#numbers.formatDecimal(ruta.saldoObtingut, 1, 2)}"></span> punts</p>
+
+            <p>
+                <strong>Estat validació:</strong>
+                <span th:if="${ruta.validada}" style="color: green;">Validada</span>
+                <span th:unless="${ruta.validada}" style="color: red;">No validada</span>
+            </p>
+
+            <!-- Botó per validar/invalidar -->
+            <form th:action="@{/rutes/validacio}" method="post">
+                <input type="hidden" name="idRuta" th:value="${ruta.idRuta}" />
+                <input type="hidden" name="validada" th:value="${!ruta.validada}" />
+
+                <button type="submit"
+                        th:text="${ruta.validada ? 'Invalidar ruta' : 'Validar ruta'}"
+                        th:class="${ruta.validada ? 'btn-invalidar' : 'btn-validar'}">
+                </button>
+            </form>
+        </div>
+
+        <h2>Mapa de la ruta</h2>
+        <div id="mapa"></div>
+    </main>
+
+    <script th:inline="javascript">
+        let punts = [[${puntsGPS}]];
+        function initMap() {
+            if (!punts || punts.length === 0) return;
+
+            const primer = { lat: punts[0].latitud, lng: punts[0].longitud };
+            const mapa = new google.maps.Map(document.getElementById("mapa"), {
+                zoom: 16,
+                center: primer
+            });
+
+            const coordenades = punts.map(p => ({ lat: p.latitud, lng: p.longitud }));
+
+            const infoWindow = new google.maps.InfoWindow();
+
+            coordenades.forEach(coord => {
+                const marker = new google.maps.Marker({ position: coord, map: mapa });
+                marker.addListener("click", () => {
+                    infoWindow.setContent(
+                        `<div style='font-size: 14px;'><strong>Latitud:</strong> ${coord.lat}<br><strong>Longitud:</strong> ${coord.lng}</div>`
+                    );
+                    infoWindow.open(mapa, marker);
+                });
+            });
+
+            const rutaPolyline = new google.maps.Polyline({
+                path: coordenades,
+                geodesic: true,
+                strokeColor: "#FF0000",
+                strokeOpacity: 1.0,
+                strokeWeight: 4
+            });
+            rutaPolyline.setMap(mapa);
+        }
+    </script>
+
+    <script async defer
+            src="yourapikey">
+    </script>
+
+    <!-- SweetAlert2: Mostra missatges flash -->
+    <script th:inline="javascript">
+        /*<![CDATA[*/
+        let missatgeExit = /*[[${missatgeExit}]]*/ null;
+        let missatgeError = /*[[${missatgeError}]]*/ null;
+
+        if (missatgeExit) {
+            Swal.fire({
+                icon: 'success',
+                title: 'Èxit!',
+                text: missatgeExit,
+                confirmButtonColor: '#74F274'
+            });
+        }
+
+        if (missatgeError) {
+            Swal.fire({
+                icon: 'error',
+                title: 'Error!',
+                text: missatgeError,
+                confirmButtonColor: '#F27474'
+            });
+        }
+        /*]]>*/
+    </script>
+</body>
+
+</html>
+

@@ -1,0 +1,631 @@
+@import url('variables.css');
+
+body {
+    font-family: var(--font-principal);
+    background-color: var(--color-groc);
+    text-align: center;
+    margin: 0;
+    padding: 0;
+}
+
+.header {
+    background-color: var(--color-verd);
+    padding: 2px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.iniciSessio-container {
+    width: 320px;
+    margin: 40px auto;
+    padding: 20px;
+}
+
+.logo {
+    width: 100px;
+}
+
+.form-group {
+    text-align: left;
+    margin-bottom: 15px;
+    margin-right: 40px;
+}
+
+h1 {  
+    color: var(--font-principal);
+    font-size: 24px;
+}
+
+label {
+    display: block;
+    margin-top: 10px;
+    font-weight: bold;
+}
+
+input {
+    width: 100%;
+    padding: 8px;
+    margin-top: 5px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.btn-container {
+    display: flex;
+    justify-content: center;
+    margin-top: 15px;
+}
+
+.forgot-password {
+    display: block;
+    margin-top: 15px;
+    color: var(--color-gris-fosc);
+    /* Canviat a gris fosc per més contrast */
+    text-decoration: none;
+    font-family: var(--font-principal);
+    font-size: 14px;
+    font-weight: bold;
+    transition: color 0.3s ease;
+}
+
+/* Efecte hover per fer-lo més visible */
+.forgot-password:hover {
+    color: #000000;
+    /* Es torna negre quan es passa per sobre */
+    text-decoration: underline;
+}
+
+/* TOPNAV */
+.topnav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: var(--color-verd);
+    padding: 10px 20px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.topnav-logo {
+    height: 50px;
+}
+
+.topnav-menu {
+    display: flex;
+    gap: 15px;
+}
+
+.topnav-menu a {
+    text-decoration: none;
+    font-family: var(--font-principal);
+    font-weight: bold;
+    background-color: var(--color-blau);
+    color: black;
+    padding: 8px 15px;
+    border-radius: 20px;
+    transition: background-color 0.3s ease;
+}
+
+.topnav-menu a:hover {
+    background-color: var(--color-blau);
+}
+
+.topnav-right {
+    flex-shrink: 0;
+}
+
+.topnav-profile {
+    height: 45px;
+    width: 45px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid var(--color-gris-fosc);
+}
+
+.topnav-left {
+    display: flex;
+    align-items: center;
+}
+
+.logout-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+    margin-right: 15px; /* Espai entre la icona i el logo */
+}
+
+.logout-button img {
+    width: 24px;
+    height: 24px;
+    cursor: pointer;
+    transition: opacity 0.2s;
+}
+
+.logout-button img:hover {
+    opacity: 0.7;
+}
+.background {
+    background-color: var(--color-groc);
+    font-family: var(--font-principal);
+}
+
+.title {
+    text-align: center;
+    font-size: 2em;
+    font-weight: bold;
+}
+
+.rutes-container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); /* forces exactament 2 columnes */
+    justify-items: center;
+    align-items: center;
+    gap: 50px;
+    margin-top: 20px;
+    margin: 2rem auto;
+    max-width: 1000px;
+    padding: 0 1rem;
+}
+
+
+.ruta-item {
+    background: var(--color-blau);
+    padding: 15px 20px;
+    margin-bottom: 20px;
+    border-radius: 12px;
+    box-shadow: 0px 4px 10px rgba(0,0,0,0.1);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    max-width: 450px;
+
+}
+
+/*.mapa-ruta {
+    width: 80px;
+    height: 80px;
+    border-radius: 5px;
+    border: 1px solid black;
+}*/
+
+.mapa-ruta {
+    width: 270px;
+    height: 270px;
+    object-fit: cover;
+    border-radius: 8px;
+    margin-right: 180px;
+    margin-left: 50px; /* augmentem separació imatge-text */
+}
+
+
+.ruta-info {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start; /* Aquí forces que la informació de la ruta vagi alineada a l'esquerra */
+    justify-content: center;
+    gap: 8px;
+    font-size: 1.2rem; /* lletra més gran */
+}
+
+
+.ruta-item:hover {
+    transform: translateY(-4px);
+    transition: transform 0.3s ease;
+}
+
+.usuaris-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    margin-top: 20px;
+}
+}
+
+.usuari-item {
+    background: var(--color-blau);
+    padding: 20px;
+    margin-bottom: 20px;
+    border-radius: 12px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    display: flex;
+    align-items: center;
+    width: 80%;
+    justify-content: space-between;
+}
+
+
+
+.usuari-info {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    gap: 8px;
+    margin-left: 400px;
+}
+
+.foto-usuari {
+    width: 120px;
+    height: 120px;
+    border-radius: 8px;
+    object-fit: cover;
+    margin-right: 20px;
+}
+
+
+
+.title-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;/* Opcional si vols separar el botó del títol */
+    gap: 10px; /* Espai entre el títol i el botó */
+}
+
+.user-form {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+    max-width: 800px;
+    margin: auto;
+}
+
+input, select {
+    padding: 10px;
+    border: 2px solid #554F4F;
+    border-radius: 5px;
+    font-family: "IBM Plex Mono", monospace;
+}
+
+.perfil-container {
+    position: relative;
+    display: inline-block;
+}
+
+.perfil-img {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.wide-textarea {
+    width: 100%;
+    height: 150px; /* Alçada fixa suficientment gran */
+    resize: none; /* Evita que l'usuari canviï la mida manualment */
+    overflow-y: auto; /* Mostra *scroll* vertical si el text supera la mida */
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-family: "IBM Plex Mono", monospace;
+    font-size: 14px;
+}
+
+.perfil-container .pink-button {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    transform: translate(50%, 50%);
+    border-radius: 50%;
+    padding: 5px;
+    background-color: var(--color-rosa);
+    border: none;
+    cursor: pointer;
+}
+.hidden-input {
+    display: none; /* No es veu el camp d'arxiu */
+}
+
+.contenidor {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 50px;
+}
+
+.imatge-perfil img {
+    width: 300px;
+    height: 300px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-right: 30px;
+}
+
+.info-usuari {
+    background-color: var(--color-blau);
+    padding: 20px;
+    border-radius: 10px;
+    width: 600px;
+    text-align: left;
+    height: auto;
+}
+
+.botons {
+    display: flex !important;
+    justify-content: space-around;
+    margin-top: 20px;
+    visibility: visible !important;
+    height: auto !important;
+    overflow: visible !important;
+}
+
+.boto {
+    text-decoration: none;
+    padding: 15px;
+    border-radius: 10px;
+    font-weight: bold;
+    display: flex;
+    flex-direction: column; /* Fa que la icona es posi a sobre del text */
+    align-items: center;
+    justify-content: center;
+    width: 100px; /* Ajusta segons necessitats */
+    height: 80px;
+    text-align: center;
+}
+
+.boto img {
+    width: 40px;  /* Ajusta la mida de la icona */
+    height: 40px;
+    margin-bottom: 5px;
+}
+
+.boto-recompenses {
+    background-color: var(--color-verd);
+    color: black;
+}
+
+.boto-rutes {
+    background-color: var(--color-rosa);
+    color: black;
+}
+
+.imatge-recompensa img {
+    width: 300px;
+    height: 300px;
+    border-radius: 10px; /*50%;*/
+    object-fit: cover;
+    margin-right: 30px;
+}
+
+.parametres-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-family: var(--font-principal);
+}
+
+.parametres-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2rem;
+    margin-bottom: 2rem;
+    width: 80%;
+}
+
+.parametre-box {
+    background-color: var(--color-blau);
+    padding: 1.5rem;
+    border-radius: 1rem;
+    font-size: 1rem;
+    border: var(--color-verd) solid 2px;
+}
+
+
+.parametre-box label {
+    display: block;
+    margin-top: 0.5rem;
+    font-weight: bold;
+}
+
+.parametre-box input {
+    width: 100%;
+    padding: 0.4rem;
+    border-radius: 0.4rem;
+    border: none;
+    margin-bottom: 0.5rem;
+    background-color: white;
+}
+
+.password-container {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.password-container input {
+    width: 100%;
+    padding: 8px;
+    font-size: 14px;
+}
+
+.password-container button {
+    position: absolute;
+    right: 10px;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    font-size: 18px;
+}
+
+/*.boto-container {
+    display: flex;
+    justify-content: center;
+}
+*/
+/*.green-button-add-user {
+    background-color: var(--color-verd);
+    font-family: var(--font-principal);
+    font-size: 1rem;
+    padding: 0.8rem 2rem;
+    border-radius: 0.6rem;
+    border: none;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+    cursor: pointer;
+}*/
+.recompensa-item {
+    background: var(--color-blau);
+    padding: 20px;
+    margin-bottom: 20px;
+    border-radius: 12px;
+    box-shadow: 0px 4px 10px rgba(0,0,0,0.1);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 70%;
+}
+.recompensa-info {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    gap: 8px;
+    font-size: 1.2rem; /* lletra més gran */
+
+}
+
+.foto-recompensa {
+    width: 220px;
+    height: 220px;
+    object-fit: cover;
+    border-radius: 8px;
+    margin-left: 50px; /* augmentem separació imatge-text */
+    margin-right: 270px; /* augmentem separació imatge-text */
+}
+.recompensa-actions {
+    display: flex;
+    flex-direction: column;
+    gap: 15px; /* més espai entre botons */
+    margin-right: 50px; /* augmentem separació imatge-text */
+}
+.recompensa-item:hover {
+    transform: translateY(-4px);
+    transition: transform 0.3s ease;
+}
+.caixa-ruta {
+    background-color: var(--color-blau);
+    padding: 2rem;
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+    margin-bottom: 2rem;
+}
+
+.caixa-ruta p {
+    margin: 0.8rem 0;
+    font-size: 1.1rem;
+    color: black;
+}
+
+.caixa-ruta strong {
+    color: black;
+}
+
+h1.title {
+    font-size: 2rem;
+    margin-bottom: 1.5rem;
+    text-align: center;
+}
+
+h2 {
+    font-size: 1.6rem;
+    margin: 2rem 0 1rem;
+    ;
+}
+
+#mapa {
+    width: 100%;
+    height: 500px;
+    border-radius: 12px;
+    border: 2px solid #D9D9D9;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.toggle-validate-button-validar {
+    background-color: var(--color-verd); /* verd clar */
+    color: black;
+    font-family: var(--font-principal);
+    font-weight: bold;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.toggle-validate-button-validar:hover {
+    background-color: var(--color-verd);
+}
+
+.toggle-validate-button-invalidar {
+    background-color: #F27474; /* vermell clar */
+    color: black;
+    font-family: var(--font-principal);
+    font-weight: bold;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.toggle-validate-button-invalidar:hover {
+    background-color: #da5c5c;
+}
+
+.btn-validar {
+    background-color: var(--color-verd); /* Verd suau */
+    color: black;
+    font-weight: bold;
+    font-family: var(--font-principal);
+    padding: 10px 20px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.btn-validar:hover {
+    background-color: #b5cc5a; /* Verd més intens al passar el ratolí */
+}
+
+.btn-invalidar {
+    background-color: var(--color-rosa); /* Rosa suau */
+    color: black;
+    font-weight: bold;
+    font-family: var(--font-principal);
+    padding: 10px 20px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.btn-invalidar:hover {
+    background-color: #e093a4; /* Rosa més intens al passar el ratolí */
+}
+
+button.boto {
+    all: unset; /* Elimina estils per defecte (clau!) */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 15px;
+    border-radius: 10px;
+    font-weight: bold;
+    width: 100px;
+    height: 80px;
+    text-align: center;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+button.boto.boto-recompenses {
+    background-color: var(--color-verd);
+    color: black;
+}

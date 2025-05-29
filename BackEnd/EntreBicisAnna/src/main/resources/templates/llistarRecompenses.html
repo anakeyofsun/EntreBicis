@@ -1,0 +1,121 @@
+<html lang="ca">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Llistar recompenses</title>
+    <link rel="stylesheet" href="/css/variables.css">
+    <link rel="stylesheet" href="/css/styles.css">
+    <link rel="stylesheet" href="/css/button.css">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script> <!-- SweetAlert2 -->
+</head>
+
+<body class="background">
+
+    <!-- TopNav reutilitzable -->
+    <div th:replace="fragments :: topnav"></div>
+
+    <main>
+        <div class="title-container">
+            <h1 class="title">Llistar recompenses</h1>
+            <a href="/recompenses/afegir" class="pink-button">
+                <img class="img-addUser" src="/imatges/plus.svg" alt="Afegir recompensa">
+            </a>
+        </div>
+
+        <div class="usuaris-container">
+            <!-- Missatge si no hi ha recompenses -->
+            <p th:if="${#lists.isEmpty(recompenses)}" class="no-usuaris">No hi ha recompenses disponibles</p>
+
+            <div th:each="recompensa : ${recompenses}" class="recompensa-item">
+                <!-- Imatge de la recompensa -->
+                <img th:if="${recompensa.imatgeBase64 != null}"
+                     th:src="'data:image/jpeg;base64,' + ${recompensa.imatgeBase64}" 
+                     alt="Foto recompensa"
+                     class="foto-recompensa">
+                <img th:if="${recompensa.imatgeBase64 == null}"
+                     src="/imatges/placeholder-recompensa.png"
+                     alt="Foto recompensa per defecte"
+                     class="foto-recompensa">
+
+                <!-- Informació de la recompensa -->
+                <div class="recompensa-info">
+                    <p><strong>Descripció:</strong> <span th:text="${recompensa.descripcio}"></span></p>
+                    <p><strong>Punt de bescanvi:</strong> <span th:text="${recompensa.nomPuntBescanvi}"></span></p>
+                    <p><strong>Saldo necessari:</strong> <span th:text="${#numbers.formatDecimal(recompensa.saldoNecessari, 1, 2)}"></span> punts</p>
+                    <p><strong>Estat:</strong> <span th:text="${recompensa.estatRecompensa ?: 'Disponible'}"></span></p>
+                    <p><strong>Data de creació: </strong><span th:text="${recompensa.dataCreacio}"></span></p>
+                    <p th:if="${recompensa.dataReserva != null}">
+                        <strong>Data de reserva:</strong> <span th:text="${recompensa.dataReserva}"></span>
+                    </p>
+                    <p th:if="${recompensa.dataAssignacio != null}">
+                        <strong>Data d'assignació:</strong> <span th:text="${recompensa.dataAssignacio}"></span>
+                    </p>
+                    
+                    <p th:if="${recompensa.dataRecollida != null}">
+                        <strong>Data de recollida:</strong> <span th:text="${recompensa.dataRecollida}"></span>
+                    </p>
+                </div>
+
+                <!-- Accions -->
+                <div class="recompensa-actions">
+                    <a th:href="@{/recompenses/consulta/{idRecompensa}(idRecompensa=${recompensa.idRecompensa})}" class="pink-button">
+                        <img class="img-eye" src="/imatges/eye.svg" alt="Consultar recompensa">
+                    </a>
+                    <a href="#" 
+                       th:onclick="'confirmarEsborrar(' + ${recompensa.idRecompensa} + ');'" 
+                       class="red-button">
+                        <img class="img-trash" src="/imatges/trash-xmark.svg" alt="Esborrar recompensa">
+                    </a>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- SweetAlert2 scripts -->
+    <script th:inline="javascript">
+        /*<![CDATA[*/
+        let missatgeError = /*[[${missatgeError}]]*/ null;
+        let missatgeExit = /*[[${missatgeExit}]]*/ null;
+
+        if (missatgeError) {
+            Swal.fire({
+                icon: 'error',
+                title: 'Error!',
+                text: missatgeError,
+                confirmButtonColor: '#F27474'
+            });
+        }
+
+        if (missatgeExit) {
+            Swal.fire({
+                icon: 'success',
+                title: 'Èxit!',
+                text: missatgeExit,
+                confirmButtonColor: '#74F274'
+            });
+        }
+        /*]]>*/
+
+        // Funció per confirmar l'esborrat
+        function confirmarEsborrar(idRecompensa) {
+            Swal.fire({
+                title: 'Estàs segur?',
+                text: 'Això eliminarà la recompensa!',
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#d33',
+                cancelButtonColor: '#3085d6',
+                confirmButtonText: 'Sí, eliminar!',
+                cancelButtonText: 'Cancel·lar'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    window.location.href = '/recompenses/esborrar/' + idRecompensa;
+                }
+            });
+        }
+    </script>
+
+</body>
+
+</html>

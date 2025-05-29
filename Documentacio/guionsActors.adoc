@@ -1,0 +1,70 @@
+:hardbreaks:
+=== [fuchsia]#1.4. GUIONS D'ACTOR#
+//TODO: Aquesta secció s'ha de completar amb els guions d'actor de l'aplicació.
+L’administrador és un rol que hereta d’usuari, per tant, pot fer tots els requisits funcionals que estan inclosos en l’apartat d’usuari i administrador. L’usuari, en canvi, només pot fer els especificats en el seu apartat.
+
+=== [fuchsia]#1.4.1. GUIÓ DE CLIENT#
+[cols="2,4"]
+|===
+|Actor |Usuari
+
+|Descripció
+|És l’usuari ciclista que utilitza l’aplicació per a comptabilitzar els quilòmetres que fa en bicicleta i poder aconseguir recompenses de consum local.
+
+|Guió
+| **RF03**: Iniciar ruta
+**RF04**: Visualitzar detalls ampliats d’una ruta
+**RF05**: Finalitzar ruta
+**RF06**: Llistar rutes
+**RF12**: Reservar recompensa
+**RF16**: Recollir recompensa
+**RF18**: Llistar recompenses
+**RF21**: Mostrar detall de la recompensa
+**RF23**: Modificar usuari
+**RF26**: Visualitzar detalls de l’usuari
+**RF27**: Recuperar password usuari
+**RF29**: Login / Logout
+|===
+
+=== [fuchsia]#1.4.2. GUIÓ D'ADMINISTRADOR#
+[cols="2,4"]
+|===
+|Actor |Administrador
+
+|Descripció
+|És l’usuari que s’encarrega de la validació de rutes i de la gestió d’usuaris i recompenses.
+
+|Guió
+| **RF01**: Validar ruta
+**RF02**: Invalidar ruta
+**RF03**: Iniciar ruta
+**RF04**: Visualitzar detalls ampliats d’una ruta
+**RF05**: Finalitzar ruta
+**RF06**: Llistar rutes
+**RF09**: Crear recompensa
+**RF11**: Eliminar recompensa disponible
+**RF12**: Reservar recompensa
+**RF14**: Assignar recompensa
+**RF16**: Recollir recompensa
+**RF18**: Llistar recompenses
+**RF21**: Mostrar detall de la recompensa
+**RF22**: Crear usuari
+**RF23**: Modificar usuari
+**RF25**: Llistar usuaris
+**RF26**: Visualitzar detalls de l’usuari
+**RF27**: Recuperar password usuari
+**RF29**: Login / Logout
+**RF36**: Modificar paràmetres del sistema
+|===
+
+=== [fuchsia]#1.4.3. GUIÓ DE SISTEMA#
+[cols="2,4"]
+|===
+|Actor |Sistema
+
+|Descripció
+|El sistema s'encarrega de fer algunes funcions automàtitzades.
+
+|Guió
+| **RF05**: Finalitzar ruta
+|===

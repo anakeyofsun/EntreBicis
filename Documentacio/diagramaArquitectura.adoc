@@ -1,0 +1,12 @@
+:hardbreaks:
+=== [fuchsia]#1.7. DIAGRAMA D'ARQUITECTURA#
+
+image::../imatges/DiagramaArquitectura.drawio (1).png[]
+
+El link a la imatge del diagrama d'arquitectura és: https://drive.google.com/file/d/1eWQQLtej6f1VJCqcnVquxetkxdoYqe6Z/view?usp=sharing
+
+==== [fuchsia]#1.7.1. ESTRUCTURA DE PACKAGES#
+
+image::../imatges/EstructuraPackages.drawio.png[]
+
+El link a la imatge del diagrama d'estructura de packages és: https://drive.google.com/file/d/1m3kB1wruN4mtEg96Jsv8DttVAllfCfpN/view?usp=sharing

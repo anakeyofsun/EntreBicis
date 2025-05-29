@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="ca">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modificar paràmetres</title>
+    <link rel="stylesheet" href="/css/variables.css">
+    <link rel="stylesheet" href="/css/styles.css">
+    <link rel="stylesheet" href="/css/button.css">
+</head>
+
+<body class="background">
+
+    <!-- TopNav -->
+    <div th:replace="fragments :: topnav"></div>
+
+    <main>
+        <h1 class="title">Modificar paràmetres del sistema</h1>
+
+        <form action="/parametres/modificar" method="POST" class="parametres-form">
+            <div class="parametres-grid">
+
+                <!-- Velocitat màxima vàlida -->
+                <div class="parametre-box">
+                    <p><strong>Velocitat màxima vàlida</strong></p>
+                    <label for="velocitatMaxValida">Actual:</label>
+                    <input type="number" id="velocitatMaxValida" readonly th:value="${parametres.velocitatMaxValida}">
+
+                    <label for="velocitatMaxValida">Nova:</label>
+                    <input type="number" id="velocitatMaxValida" name="velocitatMaxValida"
+                        th:value="${parametres.velocitatMaxValida}" pattern="^\d+(\.\d+)?$"
+                        title="Introdueix un nombre positiu. Pots utilitzar decimals amb punt (ex: 10.5)" min="0">
+                </div>
+
+                <!-- Temps màxim d'aturada -->
+                <div class="parametre-box">
+                    <p><strong>Temps màxim d’aturada</strong></p>
+                    <label for="tempsMaxAturada">Actual:</label>
+                    <input type="number" id="tempsMaxAturada" readonly th:value="${parametres.tempsMaxAturada}">
+
+                    <label for="tempsMaxAturada">Nova:</label>
+                    <input type="number" id="tempsMaxAturada" name="tempsMaxAturada"
+                        th:value="${parametres.tempsMaxAturada}" pattern="^\d+(\.\d+)?$"
+                        title="Introdueix un nombre positiu. Pots utilitzar decimals amb punt (ex: 10.5)" min="0">
+                </div>
+
+                <!-- Conversió saldo i Kms -->
+                <div class="parametre-box">
+                    <p><strong>Conversió saldo i Kms</strong></p>
+                    <label for="conversioSaldoKm">Actual:</label>
+                    <input type="number" id="conversioSaldoKm" readonly th:value="${parametres.conversioSaldoKm}">
+
+                    <label for="conversioSaldoKm">Nova:</label>
+                    <input type="number" id="conversioSaldoKm" name="conversioSaldoKm"
+                        th:value="${parametres.conversioSaldoKm}" pattern="^\d+(\.\d+)?$"
+                        title="Introdueix un nombre positiu. Pots utilitzar decimals amb punt (ex: 10.5)" min="0">
+                </div>
+
+                <!-- Caducitat recompensa -->
+                <div class="parametre-box">
+                    <p><strong>Caducitat recompensa</strong></p>
+                    <label for="tempsMaxRecompensa">Actual:</label>
+                    <input type="number" id="tempsMaxRecompensa" readonly th:value="${parametres.tempsMaxRecompensa}">
+
+                    <label for="tempsMaxRecompensa">Nova:</label>
+                    <input type="number" id="tempsMaxRecompensa" name="tempsMaxRecompensa"
+                        th:value="${parametres.tempsMaxRecompensa}" pattern="^\d+(\.\d+)?$"
+                        title="Introdueix un nombre positiu. Pots utilitzar decimals amb punt (ex: 10.5)" min="0">
+                </div>
+
+            </div>
+
+            <button type="submit" class="green-button-add-user">Confirmar</button>
+        </form>
+    </main>
+</body>
+
+</html>

@@ -1,0 +1,272 @@
+:hardbreaks:
+=== [fuchsia]#1.3. REQUERIMENTS DE L'APLICACIÓ#
+
+==== [fuchsia]#1.3.1. REQUERIMENTS NO FUNCIONALS#
+
+===== [fuchsia]#GLOBALS#
+
+* **RN01**: L’aplicació ha de ser multilloc, amb un màxim de 50 usuaris de tipus ciclista.
+
+* **RN02**: L’aplicació ha de tenir l’arquitectura client-servidor  basada en una API REST desenvolupada amb Spring Boot al servidor. Tindrà dos clients: un front-end web per a l'administrador creat amb HTML+CSS+Thymeleaf i una app mòbil per a Android, desenvolupat en Kotlin i Jetpack Compose.
+
+* **RN03**: L’administrador i/o el personal de manteniment de l’aplicació han de tenir el suport d’un sistema de logs (registres en fitxers) on es vagin desant els errors, excepcions, avisos o situacions que requereixin atenció. 
+
+* **RN04**: El codi ha de ser optimitzat, eficient i sense redundàncies, seguint les bones pràctiques de desenvolupament per a cada tecnologia emprada.
+
+* **RN05**: S’han d’utilitzar les classes, interfícies i mètodes i packages de forma òptima i adient,  seguint els les bones pràctiques d’arquitectura de software.
+
+* **RN06**: Les capçaleres de mètodes i classes rellevants (sobretot mètodes de negoci) han d’estar degudament comentades en format JavaDoc per al backend i KDoc per al codi Kotlin de l'app mobile.
+
+* **RN07**:Qualsevol excepció que es produeix durant l’execució ha de ser degudament informada a l’usuari amb informació concreta i comprensible per l’usuari, en el llenguatge de l’aplicació.. 
+
+* **RN09**: S’ha d'utilitzar el git/gitlab per implementar el projecte de forma óptima i adient. S’han de fer servir les següents branques: main/master, developer i branques per features, encara que el projecte el faci un únic integrant.
+
+* **RN10**: Tots els merges de funcionalitats s’han de fer per merge-request a developer. Les branques fusionades s’eliminen després del merge-request. Pels equips d’ún únic integrant no s’han de fer merge-request però si eliminar les branques fusionades després del merge.
+
+* **RN12**: La comunicació entre el frontend Mobile i el backend s’ha de portar a terme mitjançant els principis REST, assegurant una arquitectura desacoblada i escalable.
+
+* **RN14**: Tota la interfície d'usuari (UI) dels front-ends i tots els missatges d’avís, error i altres informacions mostrades a l’usuari han d’estar en català.
+
+===== [fuchsia]#FRONT END MOBILE#
+
+* **RN20**: L’app s’ha de desenvolupar utilitzant l’IDE Android Studio, implementant el llenguatge Kotlin per crear una aplicació nativa compatible amb dispositius Android.
+
+* **RN21**: L’app ha de seguir l’arquitectura Feature Layer juntament amb “Clean Architecture” (UI layer - Domain layer - Data layer).
+
+* **RN22**: En la capa IU ha de seguir la arquitectura moderna MVVM (Model-View-ViewModel) . El ViewModel ha de gestionar l'estat de l'aplicació amb MutableStateFlow.
+
+* **RN23**: S’ha d’utilitzar Jetpack Compose per implementar la interfície gràfica de l’app.
+
+* **RN24**: La interfície d'usuari (UI) de l’app ha de complir amb les directrius de disseny Material Design. El disseny visual ha de ser atractiu, amb coherència en colors, tipografies, icones i una distribució eficient dels elements. Totes les pantalles han de seguir el mateix estil per garantir una experiència homogènia.
+
+* **RN25**: Reutilització i coherència de components: Els elements visuals de la interfície han d'estar definits de manera modular i reutilitzable en diversos composables. Això garanteix coherència en l'estil i facilita el manteniment i escalabilitat del disseny. Els components repetitius, com botons, targetes, formularis o missatges emergents, han de seguir un patró estandarditzat per oferir una experiència visual uniforme.
+
+* **RN26**: Usabilitat (UX) i accessibilitat: La interfície de l’app ha de ser intuïtiva, eficient i fàcil d’usar. No hi pot haver passos innecessaris per accedir a les funcionalitats i s'ha de deixar molt clar què es pot fer en cada moment. A més, el disseny ha de mantenir coherència entre les funcionalitats disponibles i les restringides.
+
+* **RN27**: Fluïdesa garantida: L’app ha de respondre a les entrades de l'usuari en tot moment, evitant bloquejos o congelacions durant operacions intensives. S’han d’utilitzar mecanismes com a operacions asíncrones quan sigui necessari.
+
+* **RN28**: S’ha d'utilitzar un component visual de Navegació per facilitar l’accés a les funcionalitats principals de l’aplicació.
+RN29: L’app s’ha de poder executar en qualsevol emulador i dispositiu mòbil amb sistema operatiu Android.
+
+===== [fuchsia]#BACKEND#
+
+* **RN41**: L’estructura del projecte ha de ser de tipus Maven. 
+
+* **RN42**: Les capes de servei, lógica de negoci i de persistència han d’estar ubicades al backend.
+
+* **RN43**: El backend s’ha d’implementar mitjançant SpringBoot
+
+* **RN44**: El backend ha de ser portable i totalment funcional entre sistemes Linux i Windows.
+
+===== [fuchsia]#FRONT END WEB#
+
+* **RN51**: L'usuari administrador ha de poder accedir a l’aplicació mitjançant Internet i un navegador web.
+
+* **RN52**: Coherència de colors, fonts, icones, distribució i agrupació de components. 
+
+* **RN53**: Responsive: En cas de poder variar la grandària de la pantalla, s’ha d’adaptar el seu continguts de forma proporcionada.
+
+* **RN54**: Atenció a la diversitat (tenir en compte discapacitats visuals, motrius, dislexia, etc…).
+
+* **RN55**: Fluïdesa: L’aplicació ha de respondre a les entrades de l'usuari en tot moment. Això vol dir que si ha de quedar “congelada” mentre realitza qualsevol operació l’usuari ha d’estar degudament informat.
+
+* **RN56**: Amigable i intuitiu: Coherència i comprensió ràpida de les funcionalitats disponibles i no disponibles en cada moment, evitant que l’usuari pugui realitzar incoherències funcionals.
+
+===== [fuchsia]#SEGURETAT#
+
+* **RN61**: L’accés als front-ends han de disposar d’un sistema d’autenticació mitjançant usuari i contrasenya, assegurant intents d'accés no autoritzats.
+
+* **RN63**: L’emmagatzemament de la contrasenya d’usuari ha de ser un procés segur en tot moment utilitzant tècniques de hash robustes.
+
+* **RN64**: L’aplicació ha de protegir en tot moment les dades personals dels usuaris davant accessos no autoritzats tant de la part client com de la part d’API rest. Aquestes mai poden quedar exposades a altres usuaris de l’aplicació..
+
+===== [fuchsia]#DESPLEGAMENT (DEPLOY)#
+
+
+* **RN71**: El backend i el SGBD han d'estar allotjats al mateix servidor. Aquest ha de ser accessible des d'Internet i amb alta disponibilitat (24x7).
+
+* **RN72**: El desplegament de l’aplicació i del SGBD s’ha de poder realitzar mitjançant contenidors Doker. 
+
+==== [fuchsia]#1.3.2 REQUERIMENTS FUNCIONALS#
+
+* **RF01: Validar ruta **
+
+El sistema ha de permetre canviar l’estat d’una ruta a “**validada**”. Una ruta validada significa que el saldo es va afegir al compte de l’usuari que la va generar.
+
+Per poder ser validada, una ruta ha de trobar-se prèviament en estat “**no validada**”.
+
+
+* **RF02: Invalidar ruta**
+
+El sistema ha de permetre a l'administrador invalidar una ruta. Quan una ruta es valida, l'usuari que la va generar rep un saldo associat. Si la ruta és invalidada, aquest saldo serà retirat del compte de l'usuari.
+
+Una ruta només pot ser invalidada si es troba en estat “**vàlida**”. A més, no es permetrà invalidar una ruta si el saldo associat a la ruta és major que el saldo disponible que té el ciclista.
+
+* **RF03: Iniciar ruta**
+
+El sistema només ha de permetre començar a enregistrar els punts GPS d'una ruta si no hi ha cap altra ruta en curs. 
+
+S’haurà de consultar el paràmetre de sistema “Temps màxim d'aturada” per si s’ha de considerar que s’ha de finalitzar la ruta de manera automàtica.
+
+* **RF04: Visualitzar detalls ampliats d’una ruta**
+
+El sistema ha de permetre a l'usuari ciclista consultar la informació detallada de les rutes que ha realitzat. Aquesta informació ha de ser mostrada de manera clara i precisa, incloent:
+
+** Distància recorreguda: Mostrada amb precisió de metres, des del punt inicial fins al punt final de la ruta.
+** Temps total de la ruta: El temps complet des que la ruta va començar fins que es va finalitzar.
+** Velocitat màxima: La velocitat més alta registrada durant la ruta.
+** **Velocitat mitjana**: Calculada com la distància recorreguda dividida pel temps total. 
+**Mapa interactiu: Visualització de tots els punts recorreguts sobre un mapa, connectats per línies. El mapa ha de permetre funcionalitats de zoom i desplaçament lateral per una millor visualització. En fer clic sobre qualsevol punt del recorregut, es mostrarà la seva informació de latitud i longitud.
+
+Aquesta funcionalitat serà accessible només per a l'usuari ciclista per les seves pròpies rutes. 
+
+L’administrador, en canvi, tindrà accés per visualitzar qualsevol ruta independentment de l'usuari que l'hagi realitzat.
+
+* **RF05: Finalitzar ruta**
+
+El sistema ha de permetre que:
+
+* Només es podrà finalitzar la ruta que es trobi en estat "**en curs**".
+* Un cop finalitzada, ja no es podran afegir més punts a la ruta.
+* Un cop finalitzada, la ruta quedarà per defecte en estat "**no validada**" i haurà d’esperar l'aprovació de l'administrador per passar a "**validada**".
+* Un cop finalitzada, l'usuari visualitzarà els detalls de la ruta, seguint la funcionalitat descrita en **RF Visualitzar detalls d’una ruta** o **Visualitzar detalls ampliats d’una ruta**, depenent de si es tracta d'un equip d'un o dos integrants.
+
+* **RF06: Llistar rutes**
+
+El sistema ha de permetre visualitzar una llista de rutes amb la següent informació per cada ruta:
+
+* Distància recorreguda: Indicat amb precisió de metres des del punt inicial fins al punt final de la ruta.
+* Temps total de la ruta: Temps complet consumit per realitzar la ruta.
+* Velocitat mitjana: Calculada com la distància recorreguda dividida pel temps total.
+* Velocitat màxima: La velocitat més alta registrada durant el recorregut.
+* Saldo atorgat: L'import de saldo que s'atorga a l'usuari per una ruta vàlida.
+* Saldo disponible: El saldo no utilitzat de la ruta que es pot fer servir en futures recompenses.
+* Estat de la ruta: Indicació de si la ruta està “no validada” o “validada”.
+
+Els usuaris només podran veure les seves pròpies rutes, mentre que l'administrador tindrà accés complet per veure totes les rutes, independentment de qui les hagi generat.
+
+* **RF09: Crear recompensa**
+
+El sistema ha de permetre crear una nova recompensa i assignar-la a un punt de bescanvi.
+
+Només en el cas d’equips d’un únic integrant*, el punt de bescanvi serà un string amb el nom del negoci i l’adreça.
+
+* **RF11: Eliminar recompensa disponible**
+
+El sistema ha de permetre eliminar una recompensa quan només estigui en estat "disponible", assegurant que no estigui associada a cap reserva, assignació ni hagi estat recollida. 
+
+* **RF12: Reservar recompensa**
+
+El sistema ha de permetre que cada ciclista faci una única reserva de recompensa en curs, sempre que es compleixin les següents condicions:
+
+* Saldo suficient: El valor unitari de la recompensa no pot superar el saldo disponible de l'usuari en el moment de la reserva.
+* Reserva única: Un usuari només pot tenir una recompensa reservada al mateix temps. Fins que aquesta no sigui recollida o desassignada, no podrà reservar-ne cap altra.
+*  Disponibilitat de la recompensa: No es podrà fer una reserva si la recompensa ja està assignada, reservada o recollida per un altre usuari.
+
+
+* **RF14: Assignar recompensa**
+
+El sistema ha de permetre:
+
+* Llistar les recompenses reservades pels ciclistes: L'administrador podrà consultar totes les recompenses que han estat reservades pels ciclistes.
+* Assignar una recompensa a l'usuari ciclista que l’ha demanat:
+** Quan l'administrador assigna una recompensa al ciclista que l’ha demanat, el valor de la recompensa es descompta del saldo disponible de l’usuari, sempre i quan el valor del saldo sigui superior o igual al valor de punts de la recompensa.
+** L'assignació es registra automàticament amb la data actual per defecte.
+* Condicions d’assignació:
+** El sistema només permet assignar una recompensa per usuari en curs.
+** Si l’usuari no recull la recompensa dins del termini establert pel paràmetre del sistema (“Temps màxim per recollir la recompensa”), la recompensa es torna a posar disponible per altres usuaris, i el ciclista no recuperarà el seu saldo.
+
+* **RF16: Recollir recompensa**
+
+El sistema ha de permetre que l'usuari ciclista:
+
+* Consultar la recompensa assignada: L'usuari podrà veure la recompensa que té assignada, incloent el nom del punt de bescanvi i la descripció de la recompensa. L'usuari podrà clicar a un botó de "Recollir" per començar el procés de recollida.
+* Mostrar la informació de la recompensa al punt de bescanvi: Quan l'usuari arribi al punt de recollida, podrà visualitzar en el seu dispositiu el nom del punt de bescanvi i el nom de la recompensa de manera destacada i clara, per tal que sigui fàcilment identificable per part de la persona del punt de bescanvi.
+* Confirmació de la recollida: Un cop el ciclista hagi rebut la recompensa, haurà de fer clic en un botó anomenat "Entregat". En fer-ho, apareixerà una imatge gran en el dispositiu del ciclista amb la paraula “ENTREGAT” de manera visible i clara. Aquesta imatge es mostrarà a la persona del punt de bescanvi com a confirmació de la recollida.
+* Marcar la recompensa com a recollida: Després de la confirmació, la recompensa es marcarà com a “recollida” al sistema. Es guardarà la data i hora de la recollida, i es bloquejaran qualsevol altre tipus de modificació sobre aquesta recompensa.
+
+* **RF18: Llistar recompenses**
+
+El sistema ha de permetre llistar les recompenses mostrant les següents dades per cada recompensa:
+
+* Nom de la recompensa
+* Punt de bescanvi
+* Punts associats a la recompensa
+* Estat de la recompensa (disponible, reservada, assignada, recollida)
+* Nom de l’usuari (només en el cas que estigui reservada, assignada o recollida)
+
+**Condicions d'accés:**
+
+* **Ciclista**: Només pot veure les recompenses disponibles o les seves pròpies recompenses (reservades, assignades o recollides).
+* **Administrador**: Pot veure el llistat complet de totes les recompenses, independentment de l'estat de cada una.
+
+* **RF21: Mostrar detall de la recompensa**
+
+El sistema ha de permetre consultar les característiques d’una recompensa seleccionada dins el llistat de recompenses (segons RF18), mostrant els següents detalls:
+
+* Nom de la recompensa
+* Nom complet de l’usuari (només en el cas que sigui una recompensa reservada, assignada o recollida per un ciclista)
+* Nom del punt de bescanvi 
+* Adreça del punt de bescanvi
+* Estat de la recompensa (disponible, reservada, assignada o recollida)
+
+* **RF22: Crear usuari**
+
+El sistema ha de permetre crear un ciclista amb totes les dades del qüestionari de registre i altres dades que s’hagin obtingut mitjançant l’entrevista inicial. 
+
+
+* **RF23: Modificar usuari**
+
+El sistema ha de permetre modificar les dades d'un usuari ciclista amb les següents condicions:
+
+* Ciclista: El ciclista només pot modificar les seves pròpies dades personals, com ara nom, adreça, correu electrònic, telèfon, etc. No pot modificar les dades d'altres usuaris. També pot modificar la foto del perfil.
+* Administrador: L'administrador pot modificar totes les dades de qualsevol usuari ciclista.
+
+* **RF25: Llistar usuaris**
+
+El sistema ha de permetre visualitzar una llista d’usuaris amb la següent informació per cada usuari:
+
+* **Nom complet** de l'usuari.
+* **Correu electrònic** de l'usuari.
+* **Estat** de l'usuari (actiu o desactivat).
+* **Rol** de l’usuari (ciclista, admin)
+
+* **RF26: Visualitzar detalls de l’usuari**
+
+El sistema ha de permetre a l'administrador visualitzar els detalls de l'usuari seleccionat amb la següent informació:
+
+* Foto de l’usuari (si en té)
+* Nom complet
+* correu electrònic
+* Estat actual (actiu o desactivat).
+* Rol (ciclista, admin)
+* Saldo disponible (validat)
+* Historial de rutes: Una llista amb totes les rutes que l'usuari ha realitzat, amb el seu estat actual (no validada, validada) i els punts de saldo associats.
+* Historial de recompenses: Detalls de les recompenses que l'usuari ha reservat, assignat, recollit amb l’estat de cadascuna.
+
+En el cas de l’usuari ciclista, visualitzarà les dades del seu perfil.
+
+* **RF27: Recuperar password usuari**
+
+El sistema ha de permetre que qualsevol usuari, tant administrador com ciclista pugui recuperar el password en cas d’haver-lo oblidat d’una manera segura.
+
+* **RF29: Login / Logout**
+
+Usuari Ciclista:
+
+* Login: El ciclista ha de poder fer login a l'app mòbil utilitzant el seu correu electrònic i contrasenya.
+* Logout: El ciclista ha de poder sortir de la seva sessió de l'app mòbil en qualsevol moment.
+
+Usuari Administrador:
+
+* Login: L'administrador ha de poder fer login tant a l'app mòbil com al frontend web utilitzant el seu correu electrònic i contrasenya.
+* Logout: L'administrador també ha de poder sortir de la seva sessió tant a l'app mòbil com al frontend web en qualsevol moment.
+
+
+* **RF36: Modificar paràmetres del sistema**
+
+* Velocitat màxima vàlida: determina la velocitat màxima permesa per registrar una ruta correctament. Per defecte, 60 km/h.
+* Temps màxim d'aturada: temps màxim que un usuari pot estar aturat abans que la ruta es finalitzi automàticament. Per defecte, 5 minuts.
+* Conversió entre saldo i quilòmetres: defineix la relació entre la distància recorreguda i els punts acumulats. Per defecte, 1 km = 1 punt.
+* Temps màxim per recollir la recompensa: període màxim per recollir una recompensa assignada al punt de bescanvi. Per defecte, 72 hores.
+

@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="ca">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modificar usuari</title>
+    <link rel="stylesheet" href="/css/variables.css">
+    <link rel="stylesheet" href="/css/styles.css">
+    <link rel="stylesheet" href="/css/button.css">
+</head>
+
+<body class="background">
+
+    <!-- TopNav reutilitzable -->
+    <div th:replace="fragments :: topnav"></div>
+
+    <main>
+        <h1 class="title">Modificar usuari</h1>
+
+        <form action="/usuaris/modificar" method="POST" enctype="multipart/form-data" class="user-form">
+            <div class="form-group">
+                <label for="nomComplet"><strong>Nom complet:</strong></label>
+                <input type="text" id="nomComplet" name="nomComplet" th:value="${usuari.nomComplet}" pattern="^[A-Za-zÀ-ÿ\u00f1\u00d1\s]+$"
+                title="El nom no pot contenir caràcters especials." required>
+            </div>
+
+            <div class="form-group">
+                <label for="telefon"><strong>Telèfon:</strong></label>
+                <input type="tel" id="telefon" name="telefon" th:value="${usuari.telefon}" pattern="^[0-9]{9}$"
+                title="El telèfon ha de tenir exactament 9 dígits." required>
+            </div>
+
+            <div class="form-group">
+                <label for="email"><strong>Email:</strong></label>
+                <input type="email" id="email" name="email" th:value="${usuari.email}" readonly>
+            </div>
+
+            <div class="form-group">
+                <label for="poblacio"><strong>Població:</strong></label>
+                <input type="text" id="poblacio" name="poblacio" th:value="${usuari.poblacio}" pattern="^[A-Za-zÀ-ÿ\u00f1\u00d1\s]+$"
+                title="El nom de la població no pot contenir caràcters especials." required>
+            </div>
+
+            <div class="form-group">
+                <label for="contrasenya"><strong>Contrasenya:</strong></label>
+                <input type="password" id="contrasenya" name="contrasenya">
+            </div>
+
+            <div class="form-group">
+                <label for="rol"><strong>Tipus d'usuari:</strong></label>
+                <select id="rol" name="rol" class="form-select" th:readonly="${modeVisualitzar}"
+                    th:data-rol="${usuari?.rol}" required>
+                    <option value="" disabled selected>Seleccioneu un rol</option>
+                </select>
+            </div>
+
+            <div class="form-group perfil-group">
+                <label><strong>Imatge de perfil:</strong></label>
+                <div class="perfil-container">
+                    <!-- Mostra la imatge actual si existeix, si no, mostra una per defecte -->
+                    <img id="preview" th:if="${imatgeBase64}" th:src="'data:image/jpeg;base64,' + ${imatgeBase64}"
+                        alt="Imatge de perfil" class="perfil-img">
+                    <img id="preview" th:if="${imatgeBase64 == null}" src="/imatges/placeholder-perfil.png"
+                        class="perfil-img">
+                    <!-- Input ocult per seleccionar la imatge -->
+                    <input type="file" id="imageFile" name="imageFile" class="hidden-input" accept="image/*"
+                        onchange="previewImage(event)">
+
+                    <!-- Botó per canviar la imatge -->
+                    <button type="button" class="pink-button" onclick="document.getElementById('imageFile').click()">
+                        <img class="img-edit" src="/imatges/edit.svg" alt="Editar usuari">
+                    </button>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="observacions"><strong>Observacions:</strong></label>
+                <textarea id="observacions" name="observacions" class="wide-textarea"
+                    th:text="${usuari.observacions}"></textarea>
+            </div>
+
+            <button type="submit" class="green-button-add-user">Confirmar</button>
+        </form>
+    </main>
+
+    <script>
+        function previewImage(event) {
+            const reader = new FileReader();
+            reader.onload = function () {
+                document.getElementById('preview').src = reader.result;
+            }
+            reader.readAsDataURL(event.target.files[0]);
+        }
+    </script>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            // Llista de rols disponibles
+            const rols = ["ADMIN", "USER"];
+
+            // Element select per als rols
+            const selectRol = document.getElementById("rol");
+
+            // Recuperar el rol actual de l'usuari des de l'atribut de l'HTML
+            const selectedRol = selectRol.getAttribute("data-rol");
+
+            // Generar opcions del select
+            rols.forEach(rol => {
+                const option = document.createElement("option");
+                option.value = rol;
+                option.textContent = rol === "ADMIN" ? "Administrador" : "Ciclista";
+
+                // Preseleccionar l'opció correcta
+                if (rol === selectedRol) {
+                    option.selected = true;
+                }
+
+                selectRol.appendChild(option);
+            });
+        });
+    </script>
+</body>
+
+</html>

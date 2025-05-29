@@ -1,0 +1,9 @@
+:hardbreaks:
+=== [fuchsia]#1.1. CONTEXTUALITZACIÓ DE L'ORGANITZACIÓ CLIENT#
+
+El client d'aquesta aplicació és l'Associació d'Educació Mediambiental del Garraf. Aquesta associació té com a objectiu fomentar la mobilitat sostenible local del Garraf, específicament, l’ús de la bicicleta com a mitjà de transport, mitjançant el projecte entreBicis. 
+
+El funcionament d’aquest projecte es basa a rebre donacions de bicicletes, que posteriorment reparen i que posteriorment són venudes a un preu reduït (el client només paga la posada a punt en el taller). Aquest preu és una contribució per al manteniment de l’associació. S’estima que anualment es gestionen unes 50 bicicletes.
+Aquesta associació organitza actes com ara trobades i xerrades sobre mobilitat sostenible i mecànica bàsica. I té com a xarxes principals un compte d’Instagram i una pàgina web “EntreBicis.org/bicicletes”. 
+
+

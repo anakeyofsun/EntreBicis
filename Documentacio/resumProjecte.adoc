@@ -1,0 +1,4 @@
+:hardbreaks:
+=== [fuchsia]#1.2. BREU RESUM DEL PROJECTE#
+
+L’aplicació té com a objectiu fomentar la mobilitat sostenible local del Garraf, específicament, l’ús de la bicicleta com a mitjà de transport. Per a aconseguir aquest objectiu, se’ns proposa fer una aplicació on els usuaris ciclistes puguin comptabilitzar els quilòmetres que fan en bicicleta i poder aconseguir recompenses de consum local. Se’ns proposen dos rols funcionals dins l’aplicació, un usuari ciclista, que és qui recull informació sobre les seves rutes en bicicleta i que aconsegueix punts per intercanviar per recompenses i l’administrador, que és l’usuari que s’encarrega de la validació de rutes i de la gestió d’usuaris i recompenses. L’aplicació ha de ser funcional pels usuaris en Android, i per l’usuari en format web.

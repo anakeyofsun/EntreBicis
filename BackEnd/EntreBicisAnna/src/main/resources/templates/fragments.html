@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<body>
+    <!-- fragments/topnav.html -->
+    <div th:fragment="topnav" class="topnav">
+        <div class="topnav-left">
+            <!-- Icona de Logout -->
+            <a href="/logout" class="logout-button">
+                <img src="/imatges/exit.svg" alt="Sortir">
+            </a>
+    
+            <!-- Logo -->
+            <img src="/imatges/logoSenseFonsAmbLletra.png" alt="Logo EntreBicis" class="topnav-logo">
+        </div>
+    
+        <nav class="topnav-menu">
+            <a href="/">Rutes</a>
+            <a href="/recompenses/llistar">Recompenses</a>
+            <a href="/usuaris/llistar">Usuaris</a>
+        </nav>
+    
+        <div class="topnav-right">
+            <img src="/imatges/placeholder-perfil.png" alt="Perfil Usuari" class="topnav-profile">
+        </div>
+    </div>
+    
+</body>
+
+</html>

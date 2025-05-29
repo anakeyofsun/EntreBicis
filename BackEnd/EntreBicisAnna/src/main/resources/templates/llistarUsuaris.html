@@ -1,0 +1,106 @@
+<!--<html lang="ca">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Llistar usuaris</title>
+    <link rel="stylesheet" href="/css/variables.css">
+    <link rel="stylesheet" href="/css/styles.css">
+    <link rel="stylesheet" href="/css/button.css">
+</head>
+
+<body class="background">
+
+    <div th:replace="fragments :: topnav"></div>
+
+    <main>
+        <div class="title-container">
+            <h1 class="title">Llistar usuaris</h1>
+            <a href="/usuaris/afegir" class="pink-button">
+                <img class="img-addUser" src="/imatges/user-add.svg" alt="Afegir usuari">
+            </a>
+        </div>
+        <div class="usuaris-container">
+            <p th:if="${#lists.isEmpty(usuaris)}" class="no-usuaris">No hi ha usuaris disponibles</p>
+            <div th:each="usuari : ${usuaris}" class="usuari-item">
+                <img th:if="${usuari.imatgePerfilBase64 != null}"
+                    th:src="'data:image/jpeg;base64,' + ${usuari.imatgePerfilBase64}" alt="Foto de perfil"
+                    class="foto-usuari">
+                <img th:if="${usuari.imatgePerfilBase64 == null}" src="/imatges/placeholder-perfil.png"
+                    alt="Foto de perfil per defecte" class="foto-usuari">
+                <div class="usuari-info">
+                    <p><strong>Nom usuari:</strong> <span th:text="${usuari.nomComplet}"></span></p>
+                    <p><strong>Correu electrònic:</strong> <span th:text="${usuari.email}"></span></p>
+                    <p><strong>Rol:</strong> <span th:text="${usuari.rol}"></span></p>
+                </div>
+                <div class="usuari-actions">
+                    <a th:href="@{/usuaris/modificar/{email}(email=${usuari.email})}" class="pink-button">
+                        <img class="img-edit" src="/imatges/edit.svg" alt="Modificar usuari">
+                    </a>
+                    <a th:href="@{/usuaris/consulta/{email}(email=${usuari.email})}" class="pink-button">
+                        <img class="img-eye" src="/imatges/eye.svg" alt="Consultar usuari">
+                    </a>
+                </div>
+            </div>
+        </div>
+    </main>
+
+</body>
+
+</html>
+-->
+<html lang="ca">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Llistar usuaris</title>
+    <link rel="stylesheet" href="/css/variables.css">
+    <link rel="stylesheet" href="/css/styles.css">
+    <link rel="stylesheet" href="/css/button.css">
+</head>
+
+<body class="background">
+    <div th:replace="fragments :: topnav"></div>
+
+    <main>
+        <div class="title-container">
+            <h1 class="title">Llistar usuaris</h1>
+            <a href="/usuaris/afegir" class="pink-button">
+                <img class="img-addUser" src="/imatges/user-add.svg" alt="Afegir usuari">
+            </a>
+        </div>
+
+        <div class="usuaris-container">
+            <p th:if="${#lists.isEmpty(usuaris)}" class="no-usuaris">No hi ha usuaris disponibles</p>
+
+            <div th:each="usuari : ${usuaris}" class="recompensa-item">
+                <img th:if="${usuari.imatgePerfilBase64 != null}"
+                     th:src="'data:image/jpeg;base64,' + ${usuari.imatgePerfilBase64}"
+                     alt="Foto de perfil"
+                     class="foto-recompensa">
+
+                <img th:if="${usuari.imatgePerfilBase64 == null}"
+                     src="/imatges/placeholder-perfil.png"
+                     alt="Foto per defecte"
+                     class="foto-recompensa">
+
+                <div class="recompensa-info">
+                    <p><strong>Nom complet:</strong> <span th:text="${usuari.nomComplet}"></span></p>
+                    <p><strong>Correu electrònic:</strong> <span th:text="${usuari.email}"></span></p>
+                    <p><strong>Rol:</strong> <span th:text="${usuari.rol}"></span></p>
+
+                </div>
+
+                <div class="recompensa-actions">
+                    <a th:href="@{/usuaris/consulta/{email}(email=${usuari.email})}" class="pink-button">
+                        <img class="img-eye" src="/imatges/eye.svg" alt="Consultar usuari">
+                    </a>
+                    <a th:href="@{/usuaris/modificar/{email}(email=${usuari.email})}" class="pink-button">
+                        <img class="img-edit" src="/imatges/edit.svg" alt="Modificar usuari">
+                    </a>
+                </div>
+            </div>
+        </div>
+    </main>
+</body>
+</html>

@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="ca">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crear usuari</title>
+    <link rel="stylesheet" href="/css/variables.css">
+    <link rel="stylesheet" href="/css/styles.css">
+    <link rel="stylesheet" href="/css/button.css">
+</head>
+
+<body class="background">
+
+    <!-- TopNav reutilitzable -->
+    <div th:replace="fragments :: topnav"></div>
+
+    <main>
+        <h1 class="title">Crear usuari</h1>
+        <p th:if="${error != null}" style="color:red;">
+            <span th:text="${error}"></span>
+        </p>
+        <form action="/usuaris/afegir" method="POST" enctype="multipart/form-data" class="user-form">
+            <div class="form-group">
+                <label for="nomComplet"><strong>Nom complet:</strong></label>
+                <input type="text" id="nomComplet" name="nomComplet" pattern="^[A-Za-zÀ-ÿ\u00f1\u00d1\s]+$"
+                title="El nom no pot contenir caràcters especials." required>
+            </div>
+
+            <div class="form-group">
+                <label for="telefon"><strong>Telèfon:</strong></label>
+                <input type="tel" id="telefon" name="telefon" pattern="^[0-9]{9}$"
+                title="El telèfon ha de tenir exactament 9 dígits." required>
+            </div>
+
+            <div class="form-group">
+                <label for="email"><strong>Email:</strong></label>
+                <input type="email" id="email" name="email" required>
+            </div>
+
+            <div class="form-group">
+                <label for="poblacio"><strong>Població:</strong></label>
+                <input type="text" id="poblacio" name="poblacio" pattern="^[A-Za-zÀ-ÿ\u00f1\u00d1\s]+$"
+                title="El nom de la població no pot contenir caràcters especials." required>
+            </div>
+
+            <div class="form-group">
+                <label for="contrasenya"><strong>Contrasenya:</strong></label>
+                <div class="password-container">
+                    <input type="password" id="contrasenya" name="contrasenya" required>
+                    <button type="button" id="togglePassword" class="eye-icon">
+                        👁️ <!-- Pots utilitzar una icona o emoji per l'ull -->
+                    </button>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="rol"><strong>Tipus d'usuari:</strong></label>
+                <select id="rol" name="rol">
+                    <option value="ADMIN">Administrador</option>
+                    <option value="USER">Ciclista</option>
+                </select>
+            </div>
+
+            <div class="form-group perfil-group">
+                <label><strong>Imatge de perfil:</strong></label>
+                <div class="perfil-container">
+                    <!-- Imatge de perfil amb vista prèvia -->
+                    <img id="preview" src="/imatges/placeholder-perfil.png" alt="Imatge de perfil" class="perfil-img">
+
+                    <!-- Input ocult per seleccionar la imatge -->
+                    <input type="file" id="imageFile" name="imageFile" class="hidden-input" accept="image/*"
+                        onchange="previewImage(event)">
+
+                    <!-- Botó per canviar la imatge -->
+                    <button type="button" class="pink-button" onclick="document.getElementById('imageFile').click()">
+                        <img class="img-edit" src="/imatges/edit.svg" alt="Editar usuari">
+                    </button>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="observacions"><strong>Observacions:</strong></label>
+                <textarea id="observacions" name="observacions" class="wide-textarea"></textarea>
+            </div>
+            <button type="submit" class="green-button-add-user">Confirmar</button>
+        </form>
+    </main>
+    <script>
+        function previewImage(event) {
+            const reader = new FileReader();
+            reader.onload = function () {
+                document.getElementById('preview').src = reader.result;
+            }
+            reader.readAsDataURL(event.target.files[0]);
+        }
+    </script>
+    <script>
+        const togglePassword = document.getElementById('togglePassword');
+        const passwordField = document.getElementById('contrasenya');
+    
+        togglePassword.addEventListener('click', function () {
+            // Comprovem si el tipus de l'input és "password" i el canviem a "text" per mostrar la contrasenya
+            const type = passwordField.type === 'password' ? 'text' : 'password';
+            passwordField.type = type;
+            
+            // Opcional: canviar l'icona del botó (ull tancat / obert)
+            togglePassword.textContent = type === 'password' ? '👁️' : '🙈';  // Canvia a un ull tancat o obert
+        });
+    </script>
+</body>
+
+</html>

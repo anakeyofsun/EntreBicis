@@ -1,0 +1,5 @@
+:hardbreaks:
+=== [fuchsia]#1.6. DIAGRAMA DISSENY BASE DE DADES#
+
+image::../imatges/diagramaBBDD.png[]
+

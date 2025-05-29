@@ -1,0 +1,6 @@
+:hardbreaks:
+=== [fuchsia]#1.5. DIAGRAMA ENTITAT-RELACIÓ#
+
+image::../imatges/diagramaERFinal.drawio.png[]
+
+El link a la imatge del diagrama entitat-relació és: https://drive.google.com/file/d/1MXSzW4TyyTV4Yk3nE4Qa1wmPC6_bLtf1/view?usp=sharing

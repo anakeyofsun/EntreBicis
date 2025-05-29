@@ -1,0 +1,103 @@
+=== [fuchsia]#1.9. DISSENY D'INTERFÍCIES D'USUARI#
+
+El disseny d'interfícies d'usuari s'ha realitzat amb l'eina Figma. En aquest apartat es troben les imatges dels diferents mockups. Tant aquestes com la navegació es poden a l'enllaç: https://www.figma.com/design/S9YwoerzPtyTJSKD7FUcDj/EntreBicis?node-id=67-269&t=lqVCjB5JIaHYNFg6-1
+
+==== [fuchsia]#1.9.1. FRONT END ANDROID#
+
+===== [fuchsia]#1.9.1.1. INICIAR SESSIÓ#
+image::../imatges/IniciSessio.jpg[]
+
+===== [fuchsia]#1.9.1.2. CANVIAR CONTRASENYA#
+image::../imatges/canviarContrasenya.jpg[]
+
+===== [fuchsia]#1.9.1.3. CONFIRMACIÓ CANVIAR CONTRASENYA#
+image::../imatges/canviarContrasenyaConfirmacio.jpg[]
+
+===== [fuchsia]#1.9.1.4. NOVA RUTA#
+image::../imatges/NovaRuta.jpg[]
+
+===== [fuchsia]#1.9.1.5. VISUALITZAR RUTA#
+image::../imatges/VisualitzarRuta.jpg[]
+
+===== [fuchsia]#1.9.1.6. LLISTAT DE RUTES#
+image::../imatges/LlistarRutes.jpg[]
+
+===== [fuchsia]#1.9.1.7. VISUALITZAR PERFIL#
+image::../imatges/VisualitzarPerfil.jpg[]
+
+===== [fuchsia]#1.9.1.8. MODIFICAR PERFIL#
+image::../imatges/ModificarUsuari.jpg[]
+
+===== [fuchsia]#1.9.1.9. LLISTAT DE RECOMPENSES#
+image::../imatges/LlistarRecompenses.jpg[]
+
+===== [fuchsia]#1.9.1.10. LLISTAT DE RECOMPENSES DE L'USUARI#
+image::../imatges/LlistarRecompensesUsuari.jpg[]
+
+===== [fuchsia]#1.9.1.11. VISUALITZAR RECOMPENSA#
+image::../imatges/VisualitzarRecompensa.jpg[]
+
+===== [fuchsia]#1.9.1.12. RECOLLIR RECOMPENSA#
+image::../imatges/RecollirRecompensa.jpg[]
+
+===== [fuchsia]#1.9.1.13. RECOMPENSA ENTREGADA#
+image::../imatges/RecompensaEntregada.jpg[]
+
+==== [fuchsia]#1.9.2. FRONT END WEB#
+
+===== [fuchsia]#1.9.2.1. INICIAR SESSIÓ#
+image::../imatges/IniciarSessioWeb.jpg[]
+
+===== [fuchsia]#1.9.2.2. RECUPERAR CONTRASENYA#
+image::../imatges/canviarContrasenyaWeb.jpg[]
+
+===== [fuchsia]#1.9.2.3. CONFIRMAR NOVA CONTRASENYA#
+image::../imatges/canviarContrasenyaConfirmacioWeb.jpg[]
+
+===== [fuchsia]#1.9.2.4. LLISTAT DE RUTES#
+image::../imatges/LlistarRutesWeb.jpg[]
+
+===== [fuchsia]#1.9.2.5. VISUALITZAR RUTA#
+image::../imatges/VisualitzarRutaWeb.jpg[]
+
+===== [fuchsia]#1.9.2.6. CREAR RECOMPENSA#
+image::../imatges/CrearRecompensaWeb.jpg[]
+
+===== [fuchsia]#1.9.2.7. LLISTAT DE RECOMPENSES#
+image::../imatges/LlistarRecompensesWeb.jpg[]
+
+===== [fuchsia]#1.9.2.8. VISUALITZAR RECOMPENSA#
+image::../imatges/VisualitzarRecompensaWeb.jpg[]
+
+===== [fuchsia]#1.9.2.9. CREAR USUARI#
+image::../imatges/CrearUsuaiWeb.jpg[]
+
+===== [fuchsia]#1.9.2.10. MODIFICAR USUARI#
+image::../imatges/ModificarUsuariWeb.jpg[]
+
+===== [fuchsia]#1.9.2.11. LLISTAT D'USUARIS#
+image::../imatges/LlistarUsuarisWeb.jpg[]
+
+===== [fuchsia]#1.9.2.12. VISUALITZAR USUARI#
+image::../imatges/VisualitzarUsuariWeb.jpg[]
+
+===== [fuchsia]#1.9.2.13. MODIFICAR PARÀMETRES DEL SISTEMA#
+image::../imatges/ModificarParametresWeb.jpg[]
+
+===== [fuchsia]#1.9.3. PALETA DE COLORS#
+image::../imatges/GuiaEstils.jpg[]
+
+===== [fuchsia]#1.9.4. COMPONENTS#
+image::../imatges/Components.jpg[]
+
+
+
+
+
+
+
+
+
+
+
+

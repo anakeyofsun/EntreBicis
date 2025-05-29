@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="ca">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crear recompensa</title>
+    <link rel="stylesheet" href="/css/variables.css">
+    <link rel="stylesheet" href="/css/styles.css">
+    <link rel="stylesheet" href="/css/button.css">
+</head>
+
+<body class="background">
+
+    <!-- TopNav reutilitzable -->
+    <div th:replace="fragments :: topnav"></div>
+
+    <main>
+        <h1 class="title">Crear recompensa</h1>
+
+        <form action="/recompenses/afegir" method="POST" enctype="multipart/form-data" class="user-form">
+            <div class="form-group">
+                <label for="descripcio"><strong>Descripció:</strong></label>
+                <textarea id="descripcio" name="descripcio" class="wide-textarea"></textarea>
+            </div>
+            <div class="form-group">
+                <label for="observacions"><strong>Observacions:</strong></label>
+                <textarea id="observacions" name="observacions" class="wide-textarea"></textarea>
+            </div>
+
+            <div class="form-group">
+                <label for="nomPuntBescanvi"><strong>Nom punt bescanvi:</strong></label>
+                <input type="text" id="nomPuntBescanvi" name="nomPuntBescanvi" required>
+            </div>
+
+            <div class="form-group">
+                <label for="adresaPuntBescanvi"><strong>Adreça punt bescanvi:</strong></label>
+                <input type="text" id="adresaPuntBescanvi" name="adresaPuntBescanvi" required>
+            </div>
+
+            <div class="form-group">
+                <label for="saldoNecessari"><strong>Saldo necessàri:</strong></label>
+                <input type="number" id="saldoNecessari" name="saldoNecessari" pattern="^\d+(\.\d+)?$" 
+                title="Introdueix un nombre positiu. Pots utilitzar decimals amb punt (ex: 10.5)" required>
+            </div>
+
+            <div class="form-group perfil-group">
+                <label><strong>Imatge::</strong></label>
+                <div class="perfil-container">
+                    <!-- Imatge de la recompensa amb vista prèvia -->
+                    <img id="preview" src="/imatges/placeholder-perfil.png" alt="Imatge de recompensa" class="perfil-img">
+
+                    <!-- Input ocult per seleccionar la imatge -->
+                    <input type="file" id="imageFile" name="imageFile" class="hidden-input" accept="image/*"
+                        onchange="previewImage(event)">
+
+                    <!-- Botó per canviar la imatge -->
+                    <button type="button" class="pink-button" onclick="document.getElementById('imageFile').click()">
+                        <img class="img-edit" src="/imatges/edit.svg" alt="Editar recompensa">
+                    </button>
+                </div>
+            </div>
+            <button type="submit" class="green-button-add-user">Confirmar</button>
+        </form>
+    </main>
+    <script>
+        function previewImage(event) {
+            const reader = new FileReader();
+            reader.onload = function () {
+                document.getElementById('preview').src = reader.result;
+            }
+            reader.readAsDataURL(event.target.files[0]);
+        }
+    </script>
+</body>
+
+</html>

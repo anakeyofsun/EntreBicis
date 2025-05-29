@@ -1,0 +1,5 @@
+=== [fuchsia]#1.8. GUIÓ DE CASOS D'ÚS#
+
+image::../imatges/DiagramaCasosUs.drawio.png[]
+
+El link a la imatge del diagrama entitat-relació és: https://drive.google.com/file/d/1QEqJC4S1PoJpy2qYXEk6BHREzITLYi_b/view?usp=sharing

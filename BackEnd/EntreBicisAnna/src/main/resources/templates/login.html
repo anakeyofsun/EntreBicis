@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="ca">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Iniciar Sessió</title>
+    <link rel="stylesheet" href="/css/variables.css">
+    <link rel="stylesheet" href="/css/styles.css">
+    <link rel="stylesheet" href="/css/button.css">
+</head>
+<body>
+    <div class="header">
+        <img src="/imatges/logoSenseFonsAmbLletra.png" alt="Logo Entrebicis" class="logo">
+    </div>
+    <div class="iniciSessio-container">
+        <h1>Iniciar sessió</h1>
+        <div class="alert alert-danger" th:if="${error}" th:text="${error}"></div>
+        <div class="alert alert-success" th:if="${logout}" th:text="${logout}"></div>
+        <form class="form-group" th:action="@{/login}" method="POST">
+            <div class="mb-3">
+                <label for="email">Correu electrònic:</label>
+                <input type="email" id="email" name="email" required>
+            </div>
+            <div class="mb-3">
+                <label for="contrasenya">Contrasenya:</label>
+                <input type="password" id="contrasenya" name="contrasenya" required>
+            </div>
+            <div class="btn-container">
+                <button class="green-button" type="submit">Iniciar sessió</button>
+            </div>
+        </form>
+    </div>
+</body>
+
+</html>

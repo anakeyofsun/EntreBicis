@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Visualitzar usuari</title>
+        <link rel="stylesheet" href="/css/variables.css">
+        <link rel="stylesheet" href="/css/styles.css">
+        <link rel="stylesheet" href="/css/button.css">
+    </head>
+<body>
+    <div th:replace="fragments :: topnav"></div>
+
+    <h1>Visualitzar usuari</h1>
+
+    <div class="contenidor">
+        <!-- Imatge de perfil -->
+        <div class="imatge-perfil">
+            <img th:if="${usuari.imatgePerfilBase64 != null}"
+            th:src="'data:image/jpeg;base64,' + ${usuari.imatgePerfilBase64}" alt="Foto de perfil"
+            class="foto-usuari">
+        <img th:if="${usuari.imatgePerfilBase64 == null}" src="/imatges/placeholder-perfil.png"
+            alt="Foto de perfil per defecte" class="foto-usuari">
+        </div>
+
+        <!-- Informació de l'usuari -->
+        <div class="info-usuari">
+            <div class="dades-usuari">
+                <p><strong>Nom:</strong> <span th:text="${usuari.nomComplet}"></span></p>
+                <p><strong>Correu electrònic:</strong> <span th:text="${usuari.email}"></span></p>
+                <p><strong>Rol:</strong> <span th:text="${usuari.rol}"></span></p>
+                <p><strong>Saldo disponible:</strong> <span th:text="${usuari.saldo}"></span> punts</p>
+                <p><strong>Observacions:</strong> <span th:text="${usuari.observacions}"></span></p>
+            </div>
+
+            <!-- Botons -->
+            <div class="botons">
+                <a th:href="@{/recompenses/llistar/{email}(email=${usuari.email})}" class="boto boto-recompenses">
+                    <img src="/imatges/gift.svg" alt="Icona Recompenses">
+                    <span>Recompenses</span>
+                </a>
+                <a th:href="@{/llistar/{email}(email=${usuari.email})}" class="boto boto-rutes">
+                    <img src="/imatges/map-marker.svg" alt="Icona Rutes">
+                    <span>Rutes</span>
+                </a>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

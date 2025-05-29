@@ -1,0 +1,46 @@
+:toc-title: INDEX
+:toc: left
+:toclevels: 3
+:hardbreaks:
+:imagesdir: ./images
+
+= Memoria EntreBicis Projecte 4
+
+image::../imatges/logoSenseFonsAmbLletra.png[width=300, align="center"]
+[.text-right]
+****
+**Autora:** Anna Serrano
+**Any:** 2024-2025  
+**Curs:** DAM2M
+**Equip docent:** Esther Sánchez,
+Jordi Cardenas,
+Manel Orós
+**Institut:** INS. Nicolau Copèrnic
+****
+// Includes per a afegir les pàgines de la memòria
+
+//include::./Asciidocs/EspecificacioDeRequisits.adoc[]
+== [fuchsia]#1. DISSENY DE L'APLICACIÓ#
+
+//included per a la contextualització de l'organització client
+include::Documentacio/contextualitzacio.adoc[]
+
+include::Documentacio/resumProjecte.adoc[]
+
+include::Documentacio/requeriments.adoc[]
+
+include::Documentacio/guionsActors.adoc[]
+
+include::Documentacio/diagramaER.adoc[]
+
+include::Documentacio/diagramaBBDD.adoc[]
+
+include::Documentacio/diagramaArquitectura.adoc[]
+
+include::Documentacio/casosUs.adoc[]
+
+include::Documentacio/dissenyInterficies.adoc[]
+
+include::Documentacio/planificacioTrello.adoc[]
+
+include::Documentacio/enllacos.adoc[]

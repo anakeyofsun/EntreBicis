@@ -1,0 +1,54 @@
+<html lang="ca">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Llistar rutes</title>
+    <link rel="stylesheet" href="/css/variables.css">
+    <link rel="stylesheet" href="/css/styles.css">
+    <link rel="stylesheet" href="/css/button.css">
+</head>
+
+<body class="background">
+
+    <!-- TopNav reutilitzable -->
+    <div th:replace="fragments :: topnav"></div>
+
+    <main>
+        <h1 class="title">Llistar rutes</h1>
+        <div class="rutes-container">
+            <!-- La llista de rutes es generarà aquí -->
+            <p th:if="${#lists.isEmpty(rutes)}" class="no-rutes">No hi ha rutes disponibles</p>
+            <div th:each="ruta : ${rutes}" class="ruta-item">
+                <div class="ruta-info">
+                    <p><strong>Data:</strong> <span th:text="${ruta.data}"></span></p>
+                    <p><strong>Usuari:</strong> <span th:text="${ruta.Usuari.nomComplet}"></span></p>
+                    <p><strong>Distància recorreguda:</strong> <span th:text="${#numbers.formatDecimal(ruta.distanciaTotal, 1, 2)}"></span> metres</p>
+                    <p><strong>Temps total:</strong> <span th:text="${#numbers.formatDecimal(ruta.tempsTotal, 1, 2)}"></span> segons</p>
+                    <p><strong>Velocitat mitjana:</strong> <span th:text="${#numbers.formatDecimal(ruta.velocitatMitjana, 1, 2)}"></span> km/h</p>
+                    <p><strong>Velocitat màxima:</strong> <span th:text="${#numbers.formatDecimal(ruta.velocitatMaxima, 1, 2)}"></span> km/h</p>
+                    <p><strong>Saldo obtingut:</strong> <span th:text="${#numbers.formatDecimal(ruta.saldoObtingut, 1, 2)}"></span> punts</p>
+                    <p>
+                        <strong>Estat validació:</strong>
+                        <span th:if="${ruta.validada}" style="color: green;">Validada</span>
+                        <span th:unless="${ruta.validada}" style="color: red;">No validada</span>
+                    </p>
+                </div>
+                <a th:href="@{/detall/{rutaId}(rutaId=${ruta.idRuta})}" class="pink-button">
+                    <img class="img-eye" src="/imatges/eye.svg" alt="Veure més">
+                </a>
+            </div>
+        </div>
+
+        <!-- Botó d'engranatge -->
+        <!--<button class="settings-button">
+            <img class="img-config" src="/imatges/settings.svg" alt="Configuració">
+        </button> -->
+        <a th:href="@{/parametres/modificar}" class="settings-button">
+            <img class="img-config" src="/imatges/settings.svg" alt="Configurar paràmetres sistema">
+        </a>
+    </main>
+
+</body>
+
+</html>

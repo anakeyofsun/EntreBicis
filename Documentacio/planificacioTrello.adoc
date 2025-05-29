@@ -1,0 +1,3 @@
+==== [fuchsia]#1.10. PLANIFICACIÓ DE LES TASQUES#
+
+Per a la planificació del projecte estic fent servir l'eina Trello. El link al tauler de Trello és: https://trello.com/b/ODHYpmYW/annaentrebicis
